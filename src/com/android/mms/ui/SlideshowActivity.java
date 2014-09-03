@@ -53,6 +53,9 @@ import com.android.mms.model.LayoutModel;
 import com.android.mms.model.RegionModel;
 import com.android.mms.model.SlideshowModel;
 import com.android.mms.model.SmilHelper;
+import com.android.mms.util.Constants;
+import com.android.mms.util.Preferences;
+
 import com.google.android.mms.MmsException;
 
 /**
@@ -152,6 +155,7 @@ public class SlideshowActivity extends Activity implements EventListener {
 
     @Override
     public void onCreate(Bundle icicle) {
+		setTheme(Preferences.getTheme());
         super.onCreate(icicle);
         mHandler = new Handler();
 

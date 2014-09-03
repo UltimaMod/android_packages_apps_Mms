@@ -42,6 +42,15 @@
         </intent>
     </Preference>
 
+        <ListPreference
+            android:key="pref_theme"
+            android:persistent="true"
+            android:dialogTitle="@string/theme_dialog_title"
+            android:title="@string/pref_theme_title"
+            android:entries="@array/theme_options_entries"
+            android:entryValues="@array/theme_options_values"
+            android:defaultValue="1"/>
+        
     <PreferenceCategory android:title="@string/pref_sms_storage_title"
         android:key="pref_key_storage_settings">
 <!--
@@ -244,7 +253,7 @@
             android:persistent="false">
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
-                android:targetClass="com.android.settings.Settings$BlacklistSettingsActivity" />
+                android:targetClass="com.android.settings.Settings$BlacklistSettingsActivity"/>
         </PreferenceScreen>
 
         <ListPreference

@@ -25,6 +25,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Typeface;
@@ -119,7 +120,13 @@ public class MessageListItem extends LinearLayout implements
         mDefaultCountryIso = MmsApp.getApplication().getCurrentCountryIso();
 
         if (sDefaultContactImage == null) {
-            sDefaultContactImage = context.getResources().getDrawable(R.drawable.ic_contact_picture);
+            int[] attr = new int[] { R.attr.contactPicture};
+
+            TypedArray ta = context.obtainStyledAttributes(attr);
+
+            sDefaultContactImage = ta.getDrawable(0);
+
+            ta.recycle();
         }
     }
 
@@ -131,7 +138,12 @@ public class MessageListItem extends LinearLayout implements
         mDefaultCountryIso = MmsApp.getApplication().getCurrentCountryIso();
 
         if (sDefaultContactImage == null) {
-            sDefaultContactImage = context.getResources().getDrawable(R.drawable.ic_contact_picture);
+            int[] attr = new int[] { R.attr.contactPicture};
+            TypedArray ta = context.obtainStyledAttributes(attr);
+
+            sDefaultContactImage = ta.getDrawable(0);
+
+            ta.recycle();
         }
     }
 
@@ -766,9 +778,15 @@ public class MessageListItem extends LinearLayout implements
     }
 
     private void drawRightStatusIndicator(MessageItem msgItem) {
-        // Locked icon
+
+    	int[] attrs = new int[] { R.attr.lockMessageSMS, R.attr.smsMmsDelivered, R.attr.smsMmsDetails,  };
+
+    	TypedArray ta = mContext.obtainStyledAttributes(attrs);
+
+    	// Locked icon
+    	
         if (msgItem.mLocked) {
-            mLockedIndicator.setImageResource(R.drawable.ic_lock_message_sms);
+            mLockedIndicator.setImageResource(ta.getResourceId(0, R.drawable.ic_lock_message_sms));
             mLockedIndicator.setVisibility(View.VISIBLE);
         } else {
             mLockedIndicator.setVisibility(View.GONE);
@@ -785,7 +803,7 @@ public class MessageListItem extends LinearLayout implements
             mDeliveredIndicator.setVisibility(View.VISIBLE);
         } else if (msgItem.isSms() &&
                 msgItem.mDeliveryStatus == MessageItem.DeliveryStatus.RECEIVED) {
-            mDeliveredIndicator.setImageResource(R.drawable.ic_sms_mms_delivered);
+            mDeliveredIndicator.setImageResource(ta.getResourceId(0, R.drawable.ic_sms_mms_delivered));
             mDeliveredIndicator.setVisibility(View.VISIBLE);
         } else {
             mDeliveredIndicator.setVisibility(View.GONE);
@@ -798,11 +816,12 @@ public class MessageListItem extends LinearLayout implements
         if (msgItem.mDeliveryStatus == MessageItem.DeliveryStatus.INFO || msgItem.mReadReport
                 || (msgItem.isMms() &&
                         msgItem.mDeliveryStatus == MessageItem.DeliveryStatus.RECEIVED)) {
-            mDetailsIndicator.setImageResource(R.drawable.ic_sms_mms_details);
+            mDetailsIndicator.setImageResource(ta.getResourceId(0, R.drawable.ic_sms_mms_details));
             mDetailsIndicator.setVisibility(View.VISIBLE);
         } else {
             mDetailsIndicator.setVisibility(View.GONE);
         }
+        ta.recycle();
     }
 
     @Override

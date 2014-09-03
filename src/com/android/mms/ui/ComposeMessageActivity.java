@@ -65,6 +65,7 @@ import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SqliteWrapper;
@@ -172,6 +173,8 @@ import com.android.mms.util.PhoneNumberFormatter;
 import com.android.mms.util.SendingProgressTokenManager;
 import com.android.mms.util.SmileyParser;
 import com.android.mms.util.UnicodeFilter;
+import com.android.mms.util.Constants;
+import com.android.mms.util.Preferences;
 import com.android.mms.widget.MmsWidgetProvider;
 import com.google.android.mms.ContentType;
 import com.google.android.mms.MmsException;
@@ -197,7 +200,7 @@ import com.google.android.mms.pdu.SendReq;
 public class ComposeMessageActivity extends Activity
         implements View.OnClickListener, TextView.OnEditorActionListener,
         MessageStatusListener, Contact.UpdateListener, OnGesturePerformedListener,
-        LoaderManager.LoaderCallbacks<Cursor>  {
+        LoaderManager.LoaderCallbacks<Cursor>, Constants  {
     public static final int REQUEST_CODE_ATTACH_IMAGE     = 100;
     public static final int REQUEST_CODE_TAKE_PICTURE     = 101;
     public static final int REQUEST_CODE_ATTACH_VIDEO     = 102;
@@ -2056,6 +2059,7 @@ public class ComposeMessageActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mIsSmsEnabled = MmsConfig.isSmsEnabled(this);
+		setTheme(Preferences.getTheme());
         super.onCreate(savedInstanceState);
 
         resetConfiguration(getResources().getConfiguration());
@@ -2886,6 +2890,8 @@ public class ComposeMessageActivity extends Activity
         super.onPrepareOptionsMenu(menu) ;
 
         menu.clear();
+        int [] attrs = { R.attr.menuCall, R.attr.menuAttachment };
+        TypedArray ta = this.obtainStyledAttributes(attrs);
 
         if (mSendDiscreetMode && !mForwardMessageMode) {
             // When we're in send-a-single-message mode from the lock screen, don't show
@@ -2894,8 +2900,9 @@ public class ComposeMessageActivity extends Activity
         }
 
         if (isRecipientCallable()) {
+            
             MenuItem item = menu.add(0, MENU_CALL_RECIPIENT, 0, R.string.menu_call)
-                .setIcon(R.drawable.ic_menu_call_holo_light)
+                .setIcon(ta.getResourceId(0, R.drawable.ic_menu_call_dark))
                 .setTitle(R.string.menu_call);
             if (!isRecipientsEditorVisible()) {
                 // If we're not composing a new message, show the call icon in the actionbar
@@ -2910,7 +2917,7 @@ public class ComposeMessageActivity extends Activity
             }
             if (!mWorkingMessage.hasAttachment()) {
                 menu.add(0, MENU_ADD_ATTACHMENT, 0, R.string.add_attachment)
-                        .setIcon(R.drawable.ic_menu_attachment_holo_light)
+                        .setIcon(ta.getResourceId(1, R.drawable.ic_menu_attachment_dark))
                     .setTitle(R.string.add_attachment)
                         .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);    // add to actionbar
             }
@@ -3111,7 +3118,7 @@ public class ComposeMessageActivity extends Activity
                 .show();
     }
 
-    private String getSenderNumber() {
+      private String getSenderNumber() {
         if (isRecipientCallable()) {
             return getRecipients().get(0).getNumber().toString();
         }
@@ -3203,8 +3210,17 @@ public class ComposeMessageActivity extends Activity
 
     private void showAddAttachmentDialog(final boolean replace) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setIcon(R.drawable.ic_dialog_attach);
+
+	    int[] attrs = new int[] { R.attr.dialogAttach };
+	
+	    TypedArray ta = this.obtainStyledAttributes(attrs);
+
+     	Drawable drawableFromTheme = ta.getDrawable(0);
+     
+        builder.setIcon(drawableFromTheme);
         builder.setTitle(R.string.add_attachment);
+        
+        ta.recycle();
 
         if (mAttachmentTypeSelectorAdapter == null) {
             mAttachmentTypeSelectorAdapter = new AttachmentTypeSelectorAdapter(

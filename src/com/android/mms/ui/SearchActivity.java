@@ -48,6 +48,8 @@ import android.widget.TextView;
 import com.android.mms.MmsApp;
 import com.android.mms.R;
 import com.android.mms.data.Contact;
+import com.android.mms.util.Constants;
+import com.android.mms.util.Preferences;
 
 /***
  * Presents a List of search results.  Each item in the list represents a thread which
@@ -228,6 +230,7 @@ public class SearchActivity extends ListActivity
 
     @Override
     public void onCreate(Bundle icicle) {
+		setTheme(Preferences.getTheme());
         super.onCreate(icicle);
 
         String searchStringParameter = getIntent().getStringExtra(SearchManager.QUERY);

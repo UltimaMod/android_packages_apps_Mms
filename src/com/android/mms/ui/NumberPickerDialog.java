@@ -52,14 +52,16 @@ public class NumberPickerDialog extends AlertDialog implements OnClickListener {
      * @param context Parent.
      * @param callBack How parent is notified.
      * @param number The initial number.
+	 * @param theme the number of the theme 
      */
     public NumberPickerDialog(Context context,
             OnNumberSetListener callBack,
             int number,
             int rangeMin,
             int rangeMax,
-            int title) {
-        this(context, AlertDialog.THEME_HOLO_LIGHT, callBack, number, rangeMin, rangeMax, title);
+            int title,
+            int theme) {
+        this(context, theme, callBack, number, rangeMin, rangeMax, title);
     }
 
     /**
@@ -67,6 +69,7 @@ public class NumberPickerDialog extends AlertDialog implements OnClickListener {
      * @param theme the theme to apply to this dialog
      * @param callBack How parent is notified.
      * @param number The initial number.
+	 * @param theme the number of the theme 
      */
     public NumberPickerDialog(Context context,
             int theme,

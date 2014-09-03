@@ -1,6 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="ThemeCompat" />
+	<style name="ThemeCompat.Dark" parent="@android:style/Theme.Holo" />
+	<style name="ThemeCompat.Light" parent="@android:style/Theme.Holo.Light" />
+ 	<style name="ThemeCompat.Light.DarkActionBar" parent="@android:style/Theme.Holo.Light.DarkActionBar" />
+
+	<style name="MmsHoloDark" parent="ThemeCompat.Dark">
+	<!-- Styles-->
+		<item name="textAppearance">@style/TextAppearanceDark</item>
+		<item name="textAppearanceSearchResult">@style/TextAppearance.SearchResultDark</item>
+		<item name="textAppearanceSearchResultSubtitle">@style/TextAppearance.SearchResult.SubtitleDark</item>
+	<!-- Colors-->
+		<item name="textHairline">@color/text_hairline_dark</item>
+		<item name="timeStamp">@color/timestamp_color_dark</item> 
+		<item name="messageCount">@color/message_count_color_dark</item>  
+		<item name="unreadBgColor">@color/unread_bgcolor_dark</item>  
+		<item name="readBgColor">@drawable/read_bgcolor_dark</item>  
+		<item name="composeMessageEditText">@color/compose_message_edit_text_dark</item>
+		<item name="composeMessageTextCounter">@color/compose_message_text_counter_dark</item>
+		<item name="actionbarText">@color/actionbar_text_dark</item>
+		<item name="deleteThreadDialog">@color/delete_thread_dialog_dark</item>
+		<item name="deliveryReportHeader">@color/delivery_report_header_dark</item>
+		<item name="deliveryReportStatus">@color/delivery_report_recipient_dark</item>
+		<item name="deliveryReportRecipient">@color/delivery_report_status_dark</item>
+		<item name="deliveryReportDate">@color/delivery_report_date_dark</item>
+		<item name="ButtonText">@color/button_text_dark</item>
+		<item name="messageReceived">@color/message_received_dark</item>
+		<item name="messageSent">@color/message_sent_dark</item>
+		<item name="backgroundColor">@color/background_dark</item>
+		<item name="darkgrayBackgrounds">@color/background_dark</item>
+		<item name="dividersColor">@color/dividers_dark</item>
+		<item name="actionbarTextButton">@color/action_bar_button_text_color_dark</item> 
+		<!-- Images -->
+		<item name="sendButton">@drawable/send_button_selector_dark</item>
+		<item name="attachmentEditor">@drawable/attachment_editor_bg_dark</item>
+		<item name="hairlineLeft">@drawable/hairline_left_dark</item>
+		<item name="hairlineRight">@drawable/hairline_right_dark</item>
+		<item name="attachAudio">@drawable/ic_attach_capture_audio_holo_light_dark</item>
+		<item name="attachCaptureAudio">@drawable/ic_attach_capture_audio_holo_light_dark</item>
+		<item name="attachCapturePicture">@drawable/ic_attach_capture_picture_holo_light_dark</item>
+		<item name="attachCaptureVideo">@drawable/ic_attach_capture_video_holo_light_dark</item>
+		<item name="attachmentUniversalSmall">@drawable/ic_attachment_universal_small_dark</item>
+		<item name="attachPicture">@drawable/ic_attach_picture_holo_light_dark</item>
+		<item name="attachSlideshow">@drawable/ic_attach_slideshow_holo_light_dark</item>
+		<item name="attachVideo">@drawable/ic_attach_video_holo_light_dark</item>
+		<item name="dialogAttach">@drawable/ic_dialog_attach_dark</item>
+		<item name="lockMessageSMS">@drawable/ic_lock_message_sms_dark</item>
+
+		<item name="menuAddSlide">@drawable/ic_menu_add_slide_dark</item>
+		<item name="menuAddSound">@drawable/ic_menu_add_sound_dark</item>
+		<item name="menuAttachment">@drawable/ic_menu_attachment_dark</item>
+		<item name="menuDeletePlayed">@drawable/ic_menu_delete_played_dark</item>
+		<item name="menuDuration">@drawable/ic_menu_duration_dark</item>
+		<item name="menuEdit">@drawable/ic_menu_edit_dark</item>
+		<item name="menuMoveDown">@drawable/ic_menu_move_down_dark</item>
+		<item name="menuMoveUp">@drawable/ic_menu_move_up_dark</item>
+		<item name="menuMovie">@drawable/ic_menu_movie_dark</item>
+		<item name="menuPicture">@drawable/ic_menu_picture_dark</item>
+		<item name="menuRemovePicture">@drawable/ic_menu_remove_picture_dark</item>
+		<item name="menuRemoveSound">@drawable/ic_menu_remove_sound_dark</item>
+		<item name="menuRemoveText">@drawable/ic_menu_remove_text_dark</item>
+		<item name="menuRemoveVideo">@drawable/ic_menu_remove_video_dark</item>
+
+		<item name="missingThumbNailPicture">@drawable/ic_missing_thumbnail_picture_dark</item>
+		<item name="missingThumbNailVideo">@drawable/ic_missing_thumbnail_video_dark</item>
+		
+		<item name="addRecipients">@drawable/ic_recipients_add_dark</item>
+		<item name="smsMmsDelivered">@drawable/ic_sms_mms_delivered_dark</item>
+		<item name="smsMmsDetails">@drawable/ic_sms_mms_details_dark</item>
+		<item name="smsMmsNotDelivered">@drawable/ic_sms_mms_not_delivered_dark</item>
+		<item name="smsMmsPending">@drawable/ic_sms_mms_pending_dark</item>
+		<item name="messageBubbleLeft">@drawable/msg_bubble_left_dark</item>
+		<item name="messageBubbleRight">@drawable/msg_bubble_right_dark</item>
+		<item name="contactPicture">@drawable/ic_contact_picture_dark</item>
+		<item name="conversationBackgroundRead">@drawable/conversation_item_background_read_dark</item>   
+		<item name="conversationBackgroundUnread">@drawable/conversation_item_background_unread_dark</item>   
+		<item name="menuCall">@drawable/ic_menu_call_dark</item>
+		<item name="menuSearch">@drawable/ic_menu_search_holo_dark</item> 
+		<item name="menuCompose">@drawable/ic_menu_msg_compose_holo_dark</item>
+		<item name="menuTrash">@drawable/ic_menu_trash_holo_dark</item>              
+    	</style>
+	<style name="MmsHoloLight" parent="ThemeCompat.Light">
+	<!-- Styles-->
+		<item name="textAppearance">@style/TextAppearance</item> 
+		<item name="textAppearanceSearchResult">@style/TextAppearance.SearchResult</item>
+		<item name="textAppearanceSearchResultSubtitle">@style/TextAppearance.SearchResult.Subtitle</item>
+	<!-- Colors-->
+		<item name="textHairline">@color/text_hairline</item>
+		<item name="timeStamp">@color/timestamp_color</item>
+		<item name="messageCount">@color/message_count_color</item>    
+		<item name="unreadBgColor">@color/unread_bgcolor</item>  
+		<item name="readBgColor">@drawable/read_bgcolor_light</item>  
+		<item name="composeMessageEditText">@color/compose_message_edit_text</item>
+		<item name="composeMessageTextCounter">@color/compose_message_text_counter</item>
+		<item name="actionbarText">@color/actionbar_text</item>
+		<item name="deleteThreadDialog">@color/delete_thread_dialog</item>
+		<item name="deliveryReportHeader">@color/delivery_report_header</item>
+		<item name="deliveryReportStatus">@color/delivery_report_recipient</item>
+		<item name="deliveryReportRecipient">@color/delivery_report_status</item>
+		<item name="deliveryReportDate">@color/delivery_report_date</item>
+		<item name="ButtonText">@color/button_text</item>
+		<item name="messageReceived">@color/message_received</item>
+		<item name="messageSent">@color/message_sent</item>
+		<item name="backgroundColor">@color/background</item>
+		<item name="darkgrayBackgrounds">@color/background</item>
+		<item name="dividersColor">@color/dividers</item>  
+		<item name="actionbarTextButton">@color/action_bar_button_text_color</item>
+		<!-- Images -->
+		<item name="sendButton">@drawable/send_button_selector</item>
+		<item name="attachmentEditor">@drawable/attachment_editor_bg</item>
+		<item name="hairlineLeft">@drawable/hairline_left</item>
+		<item name="hairlineRight">@drawable/hairline_right</item>
+		<item name="attachAudio">@drawable/ic_attach_capture_audio_holo_light</item>
+		<item name="attachCaptureAudio">@drawable/ic_attach_capture_audio_holo_light</item>
+		<item name="attachCapturePicture">@drawable/ic_attach_capture_picture_holo_light</item>
+		<item name="attachCaptureVideo">@drawable/ic_attach_capture_video_holo_light</item>
+		<item name="attachmentUniversalSmall">@drawable/ic_attachment_universal_small</item>
+		<item name="attachPicture">@drawable/ic_attach_picture_holo_light</item>
+		<item name="attachSlideshow">@drawable/ic_attach_slideshow_holo_light</item>
+		<item name="attachVideo">@drawable/ic_attach_video_holo_light</item>
+		<item name="dialogAttach">@drawable/ic_dialog_attach</item>
+		<item name="lockMessageSMS">@drawable/ic_lock_message_sms</item>
+
+		<item name="menuAddSlide">@drawable/ic_menu_add_slide</item>
+		<item name="menuAddSound">@drawable/ic_menu_add_sound</item>
+		<item name="menuAttachment">@drawable/ic_menu_attachment_light</item>
+		<item name="menuDeletePlayed">@drawable/ic_menu_delete_played</item>
+		<item name="menuDuration">@drawable/ic_menu_duration</item>
+		<item name="menuEdit">@drawable/ic_menu_edit</item>
+		<item name="menuMoveDown">@drawable/ic_menu_move_down</item>
+		<item name="menuMoveUp">@drawable/ic_menu_move_up</item>
+		<item name="menuMovie">@drawable/ic_menu_movie</item>
+		<item name="menuPicture">@drawable/ic_menu_picture</item>
+		<item name="menuRemovePicture">@drawable/ic_menu_remove_picture</item>
+		<item name="menuRemoveSound">@drawable/ic_menu_remove_sound</item>
+		<item name="menuRemoveText">@drawable/ic_menu_remove_text</item>
+		<item name="menuRemoveVideo">@drawable/ic_menu_remove_video</item>
+
+		<item name="missingThumbNailPicture">@drawable/ic_missing_thumbnail_picture</item>
+		<item name="missingThumbNailVideo">@drawable/ic_missing_thumbnail_video</item>
+		
+		<item name="addRecipients">@drawable/ic_recipients_add</item>
+		<item name="smsMmsDelivered">@drawable/ic_sms_mms_delivered</item>
+		<item name="smsMmsDetails">@drawable/ic_sms_mms_details</item>
+		<item name="smsMmsNotDelivered">@drawable/ic_sms_mms_not_delivered</item>
+		<item name="smsMmsPending">@drawable/ic_sms_mms_pending</item>
+		<item name="messageBubbleLeft">@drawable/msg_bubble_left</item>
+		<item name="messageBubbleRight">@drawable/msg_bubble_right</item>
+		<item name="contactPicture">@drawable/ic_contact_picture</item>
+		<item name="conversationBackgroundRead">@drawable/conversation_item_background_read</item>   
+		<item name="conversationBackgroundUnread">@drawable/conversation_item_background_unread</item>
+		<item name="menuCall">@drawable/ic_menu_call_light</item>
+		<item name="menuSearch">@drawable/ic_menu_search_holo_light</item> 
+		<item name="menuCompose">@drawable/ic_menu_msg_compose_holo_light</item>
+		<item name="menuTrash">@drawable/ic_menu_trash_holo_light</item>                
+    	</style>
+	<style name="MmsHoloLightDarkAction" parent="ThemeCompat.Light.DarkActionBar">
+	<!-- Styles-->
+		<item name="textAppearance">@style/TextAppearance</item> 
+		<item name="textAppearanceSearchResult">@style/TextAppearance.SearchResult</item>
+		<item name="textAppearanceSearchResultSubtitle">@style/TextAppearance.SearchResult.Subtitle</item>
+	<!-- Colors-->
+		<item name="textHairline">@color/text_hairline</item>
+		<item name="timeStamp">@color/timestamp_color</item>
+		<item name="messageCount">@color/message_count_color_dark</item>    
+		<item name="unreadBgColor">@color/unread_bgcolor</item>  
+		<item name="readBgColor">@drawable/read_bgcolor_light</item> 
+		<item name="composeMessageEditText">@color/compose_message_edit_text</item>
+		<item name="composeMessageTextCounter">@color/compose_message_text_counter</item>
+		<item name="actionbarText">@color/actionbar_text</item>
+		<item name="deleteThreadDialog">@color/delete_thread_dialog</item>
+		<item name="deliveryReportHeader">@color/delivery_report_header</item>
+		<item name="deliveryReportStatus">@color/delivery_report_recipient</item>
+		<item name="deliveryReportRecipient">@color/delivery_report_status</item>
+		<item name="deliveryReportDate">@color/delivery_report_date</item>
+		<item name="ButtonText">@color/button_text</item>
+		<item name="messageReceived">@color/message_received</item>
+		<item name="messageSent">@color/message_sent</item>
+		<item name="backgroundColor">@color/background</item>
+		<item name="darkgrayBackgrounds">@color/background</item>
+		<item name="dividersColor">@color/dividers</item>  
+		<item name="actionbarTextButton">@color/action_bar_button_text_color_dark</item>
+		<!-- Images -->
+		<item name="sendButton">@drawable/send_button_selector</item>
+		<item name="attachmentEditor">@drawable/attachment_editor_bg</item>
+		<item name="hairlineLeft">@drawable/hairline_left</item>
+		<item name="hairlineRight">@drawable/hairline_right</item>
+		<item name="attachAudio">@drawable/ic_attach_capture_audio_holo_light</item>
+		<item name="attachCaptureAudio">@drawable/ic_attach_capture_audio_holo_light</item>
+		<item name="attachCapturePicture">@drawable/ic_attach_capture_picture_holo_light</item>
+		<item name="attachCaptureVideo">@drawable/ic_attach_capture_video_holo_light</item>
+		<item name="attachmentUniversalSmall">@drawable/ic_attachment_universal_small</item>
+		<item name="attachPicture">@drawable/ic_attach_picture_holo_light</item>
+		<item name="attachSlideshow">@drawable/ic_attach_slideshow_holo_light</item>
+		<item name="attachVideo">@drawable/ic_attach_video_holo_light</item>
+		<item name="dialogAttach">@drawable/ic_dialog_attach</item>
+		<item name="lockMessageSMS">@drawable/ic_lock_message_sms</item>
+
+		<item name="menuAddSlide">@drawable/ic_menu_add_slide</item>
+		<item name="menuAddSound">@drawable/ic_menu_add_sound</item>
+		<item name="menuAttachment">@drawable/ic_menu_attachment_light</item>
+		<item name="menuDeletePlayed">@drawable/ic_menu_delete_played</item>
+		<item name="menuDuration">@drawable/ic_menu_duration</item>
+		<item name="menuEdit">@drawable/ic_menu_edit</item>
+		<item name="menuMoveDown">@drawable/ic_menu_move_down</item>
+		<item name="menuMoveUp">@drawable/ic_menu_move_up</item>
+		<item name="menuMovie">@drawable/ic_menu_movie</item>
+		<item name="menuPicture">@drawable/ic_menu_picture</item>
+		<item name="menuRemovePicture">@drawable/ic_menu_remove_picture</item>
+		<item name="menuRemoveSound">@drawable/ic_menu_remove_sound</item>
+		<item name="menuRemoveText">@drawable/ic_menu_remove_text</item>
+		<item name="menuRemoveVideo">@drawable/ic_menu_remove_video</item>
+
+		<item name="missingThumbNailPicture">@drawable/ic_missing_thumbnail_picture</item>
+		<item name="missingThumbNailVideo">@drawable/ic_missing_thumbnail_video</item>
+		
+		<item name="addRecipients">@drawable/ic_recipients_add</item>
+		<item name="smsMmsDelivered">@drawable/ic_sms_mms_delivered</item>
+		<item name="smsMmsDetails">@drawable/ic_sms_mms_details</item>
+		<item name="smsMmsNotDelivered">@drawable/ic_sms_mms_not_delivered</item>
+		<item name="smsMmsPending">@drawable/ic_sms_mms_pending</item>
+		<item name="messageBubbleLeft">@drawable/msg_bubble_left</item>
+		<item name="messageBubbleRight">@drawable/msg_bubble_right</item>
+		<item name="contactPicture">@drawable/ic_contact_picture</item>
+		<item name="conversationBackgroundRead">@drawable/conversation_item_background_read</item>   
+		<item name="conversationBackgroundUnread">@drawable/conversation_item_background_unread</item>  
+		<item name="menuCall">@drawable/ic_menu_call_dark</item>
+		<item name="menuSearch">@drawable/ic_menu_search_holo_dark</item>   
+		<item name="menuCompose">@drawable/ic_menu_msg_compose_holo_dark</item>
+		<item name="menuTrash">@drawable/ic_menu_trash_holo_dark</item>               
+    	</style>
+
     <style name="TextAppearance">
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textColorHighlight">#FFFF9200</item>
+        <item name="android:textColorHint">?android:textColorHint</item>
+        <item name="android:textColorLink">#5C5CFF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearanceDark">
         <item name="android:textColor">?android:textColorPrimary</item>
         <item name="android:textColorHighlight">#FFFF9200</item>
         <item name="android:textColorHint">?android:textColorHint</item>
@@ -15,6 +255,12 @@
         <item name="android:textColorHint">?android:textColorHintInverse</item>
     </style>
 
+    <style name="TextAppearance.SearchResultDark">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">?android:textColorPrimaryInverse</item>
+        <item name="android:textColorHint">?android:textColorHintInverse</item>
+    </style>
+
     <style name="TextAppearance.SearchResult.Title">
         <item name="android:textSize">16sp</item>
     </style>
@@ -24,7 +270,9 @@
         <item name="android:textColor">?android:textColorSecondaryInverse</item>
     </style>
 
-    <style name="MmsHoloTheme" parent="@android:style/Theme.Holo.Light">
+    <style name="TextAppearance.SearchResult.SubtitleDark">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">?android:textColorSecondaryInverse</item>
     </style>
 
     <style name="WidgetTitle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">

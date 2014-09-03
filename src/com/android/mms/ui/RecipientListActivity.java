@@ -20,6 +20,7 @@ import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.ContactsContract.Profile;
@@ -37,10 +38,13 @@ import android.widget.ListView;
 import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
+import com.android.mms.MmsApp;
 import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
+import com.android.mms.util.Constants;
+import com.android.mms.util.Preferences;
 
 /**
  * Display a list of recipients for a group conversation. This activity expects to receive a
@@ -53,6 +57,7 @@ public class RecipientListActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle icicle) {
+		setTheme(Preferences.getTheme());
         super.onCreate(icicle);
 
         if (icicle != null) {
@@ -118,11 +123,14 @@ public class RecipientListActivity extends ListActivity {
         public RecipientListAdapter(Context context, int resource,
                 ContactList recipients) {
             super(context, resource, recipients);
+            int[] attrs = new int[] { R.attr.contactPicture /* index 0 */};
+
+   	     	TypedArray ta = context.obtainStyledAttributes(attrs);
 
             mResourceId = resource;
             mInflater = LayoutInflater.from(context);
-            mDefaultContactImage =
-                    context.getResources().getDrawable(R.drawable.ic_contact_picture);
+            mDefaultContactImage = ta.getDrawable(0 /* index */);
+            ta.recycle();
         }
 
         @Override

@@ -33,6 +33,7 @@ import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -157,12 +158,15 @@ public class QuickMessagePopup extends Activity implements
 
         // Initialise the message list and other variables
         mContext = this;
+        int[] attrs = new int[] { R.attr.contactPicture };
+	    TypedArray ta = mContext.obtainStyledAttributes(attrs);
         mMessageList = new ArrayList<QuickMessage>();
-        mDefaultContactImage = getResources().getDrawable(R.drawable.ic_contact_picture);
+        mDefaultContactImage = ta.getDrawable(0);
         mNumTemplates = getTemplatesCount();
         mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mKeyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-
+        
+        ta.recycle();
         // Get the preferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
         mFullTimestamp = prefs.getBoolean(MessagingPreferenceActivity.FULL_TIMESTAMP, false);
@@ -364,9 +368,9 @@ public class QuickMessagePopup extends Activity implements
         // This allows the app to be run on non-blacklist enabled roms (including Stock)
         if (MessageUtils.isCyanogenMod(this)) {
             if (BlacklistUtils.isBlacklistEnabled(this)) {
-                menu.add(0, MENU_ADD_TO_BLACKLIST, 0, R.string.add_to_blacklist)
-                        .setIcon(R.drawable.ic_block_message_holo_dark)
-                        .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+             menu.add(0, MENU_ADD_TO_BLACKLIST, 0, R.string.add_to_blacklist)
+             .setIcon(R.drawable.ic_block_message_holo_dark)
+             .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
             }
         }
     }
@@ -377,7 +381,6 @@ public class QuickMessagePopup extends Activity implements
             case MENU_ADD_TEMPLATE:
                 selectTemplate();
                 return true;
-
             case MENU_ADD_TO_BLACKLIST:
                 confirmAddBlacklist();
                 return true;

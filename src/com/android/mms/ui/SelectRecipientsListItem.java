@@ -17,6 +17,7 @@
 package com.android.mms.ui;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
@@ -69,8 +70,10 @@ public class SelectRecipientsListItem extends LinearLayout implements Contact.Up
         super(context, attrs);
 
         if (sDefaultContactImage == null) {
-            sDefaultContactImage =
-                    context.getResources().getDrawable(R.drawable.ic_contact_picture);
+            int[] attr = new int[] { R.attr.contactPicture};
+            TypedArray ta = context.obtainStyledAttributes(attr);
+            sDefaultContactImage = ta.getDrawable(0);
+            ta.recycle();
         }
     }
 

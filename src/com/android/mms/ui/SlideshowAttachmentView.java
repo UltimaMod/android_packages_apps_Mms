@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
@@ -32,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.mms.MmsApp;
 import com.android.mms.R;
 
 /**
@@ -43,6 +45,7 @@ public class SlideshowAttachmentView extends LinearLayout implements
 
     private ImageView mImageView;
     private TextView mTextView;
+    private Context mContext = MmsApp.getContext();
 
     public SlideshowAttachmentView(Context context) {
         super(context);
@@ -73,8 +76,13 @@ public class SlideshowAttachmentView extends LinearLayout implements
     public void setImage(String name, Bitmap bitmap) {
         if (null == bitmap) {
             try {
-                bitmap = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.ic_missing_thumbnail_picture);
+            	int[] attrs = new int[] { R.attr.missingThumbNailPicture };
+
+            	TypedArray ta = mContext.obtainStyledAttributes(attrs);
+            	
+            	bitmap = BitmapFactory.decodeResource(getResources(),
+                		ta.getResourceId(0, R.drawable.ic_missing_thumbnail_picture));
+            	ta.recycle();
             } catch (java.lang.OutOfMemoryError e) {
                 // We don't even have enough memory to load the "missing thumbnail" image
             }

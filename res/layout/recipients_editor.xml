@@ -31,7 +31,7 @@
         android:inputType="textFilter"
         android:nextFocusRight="@+id/select_recipients_button"
         android:layout_weight="1"
-        android:textColor="@color/compose_message_edit_text"
+        android:textColor="?attr/composeMessageEditText"
     />
 
     <ImageButton android:id="@+id/recipients_picker"
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:padding="12dip"
-        android:src="@drawable/ic_recipients_add"
+        android:src="?attr/addRecipients"
     />
 
 </LinearLayout>

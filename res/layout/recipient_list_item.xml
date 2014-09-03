@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/avatar"
             android:layout_alignParentRight="true"
-            android:background="@drawable/hairline_left"
+            android:background="?attr/hairlineLeft"
             android:orientation="vertical" >
 
             <TextView android:id="@+id/name"
@@ -51,7 +51,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@drawable/list_item_font_primary"
                 android:textSize="16sp" />
 
             <TextView android:id="@+id/number"
@@ -59,8 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/message_item_text_padding_left_right"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@drawable/list_item_font_secondary" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

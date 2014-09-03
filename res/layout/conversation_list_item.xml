@@ -71,7 +71,7 @@
         android:visibility="gone"
         android:layout_toLeftOf="@id/error"
         android:layout_alignBottom="@id/date"
-        android:src="@drawable/ic_attachment_universal_small" />
+        android:src="?attr/attachmentUniversalSmall" />
 
     <TextView android:id="@+id/subject"
         android:layout_width="wrap_content"

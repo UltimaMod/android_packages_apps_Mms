@@ -28,6 +28,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
@@ -44,6 +45,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.mms.MmsApp;
 import com.android.mms.R;
 import com.android.mms.model.LayoutModel;
 
@@ -60,6 +62,7 @@ public class SlideListItemView extends LinearLayout implements SlideViewInterfac
     private TextView mAttachmentName;
     private ImageView mAttachmentIcon;
     private Uri mImageUri;
+    private static Context mContext = MmsApp.getContext();
 
     public SlideListItemView(Context context) {
         super(context);
@@ -98,9 +101,13 @@ public class SlideListItemView extends LinearLayout implements SlideViewInterfac
 
     public void setImage(String name, Bitmap bitmap) {
         try {
+        	int[] attrs = new int[] { R.attr.missingThumbNailPicture };
+
+        	TypedArray ta = mContext.obtainStyledAttributes(attrs);
+
             if (null == bitmap) {
                 bitmap = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.ic_missing_thumbnail_picture);
+                		ta.getResourceId(0, R.drawable.ic_missing_thumbnail_picture));
             }
             mImagePreview.setVisibility(View.VISIBLE);
             mImagePreview.setImageBitmap(bitmap);
@@ -108,6 +115,7 @@ public class SlideListItemView extends LinearLayout implements SlideViewInterfac
                 ViewAttachmentListener l = new ViewAttachmentListener(mImageUri, name);
                 mImagePreview.setOnClickListener(l);
             }
+            ta.recycle();
         } catch (java.lang.OutOfMemoryError e) {
             Log.e(TAG, "setImage: out of memory: ", e);
         }

@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/avatar"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/hairline_left"
+                android:background="?attr/hairlineLeft"
                 android:orientation="vertical" >
 
                 <TextView android:id="@+id/text_view"
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:linksClickable="false"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/message_received"
+                    android:textColor="?attr/messageReceived"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -77,13 +77,13 @@
                         android:layout_height="wrap_content"
                         android:paddingRight="3dip"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/text_hairline" />
+                        android:textColor="?attr/textHairline" />
 
                     <ImageView
                         android:id="@+id/locked_indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_lock_message_sms"
+                        android:src="?attr/lockMessageSMS"
                         android:paddingRight="3dip"
                         android:visibility="gone" />
 
@@ -91,7 +91,7 @@
                         android:id="@+id/delivered_indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_sms_mms_delivered"
+                        android:src="?attr/smsMmsDelivered"
                         android:paddingRight="3dip"
                         android:visibility="gone" />
 
@@ -99,7 +99,7 @@
                         android:id="@+id/details_indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_sms_mms_details"
+                        android:src="?attr/smsMmsDetails"
                         android:visibility="gone" />
                 </LinearLayout>
 

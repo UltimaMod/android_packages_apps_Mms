@@ -45,6 +45,8 @@ import android.widget.TextView;
 import com.android.mms.R;
 import com.android.mms.templates.TemplatesProvider.Template;
 import com.android.mms.ui.MessagingPreferenceActivity;
+import com.android.mms.util.Constants;
+import com.android.mms.util.Preferences;
 
 public class TemplatesListActivity extends ListActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
@@ -100,6 +102,7 @@ public class TemplatesListActivity extends ListActivity implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+		setTheme(Preferences.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.templates_list);
 

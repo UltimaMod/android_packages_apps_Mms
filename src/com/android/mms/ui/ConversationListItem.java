@@ -18,6 +18,7 @@
 package com.android.mms.ui;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -73,7 +74,10 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
         super(context, attrs);
 
         if (sDefaultContactImage == null) {
-            sDefaultContactImage = context.getResources().getDrawable(R.drawable.ic_contact_picture);
+        	int[] attr = new int[] { R.attr.contactPicture};
+        	TypedArray ta = context.obtainStyledAttributes(attr);
+        	sDefaultContactImage = ta.getDrawable(0);
+        	ta.recycle();
         }
     }
 
@@ -223,16 +227,21 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
     }
 
     private void updateBackground() {
+    	int[] attrs = new int[] { R.attr.conversationBackgroundRead, R.attr.conversationBackgroundUnread};
+
+    	TypedArray ta = mContext.obtainStyledAttributes(attrs);
+
         int backgroundId;
         if (mConversation.isChecked()) {
             backgroundId = R.drawable.list_selected_holo_light;
         } else if (mConversation.hasUnreadMessages()) {
-            backgroundId = R.drawable.conversation_item_background_unread;
+            backgroundId = ta.getResourceId(1, R.drawable.conversation_item_background_unread);
         } else {
-            backgroundId = R.drawable.conversation_item_background_read;
+            backgroundId = ta.getResourceId(0, R.drawable.conversation_item_background_read);
         }
         Drawable background = mContext.getResources().getDrawable(backgroundId);
         setBackground(background);
+        ta.recycle();
     }
 
     public final void unbind() {

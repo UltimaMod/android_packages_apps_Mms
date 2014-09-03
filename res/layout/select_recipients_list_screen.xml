@@ -42,8 +42,8 @@
         android:layout_height="match_parent"
         android:drawSelectorOnTop="false"
         android:scrollbarStyle="outsideOverlay"
-        android:background="@color/background"
-        android:cacheColorHint="@color/background"
+        android:background="?attr/backgroundColor"
+        android:cacheColorHint="?attr/backgroundColor"
         android:fadingEdgeLength="16dip"
         android:paddingLeft="16dip"
         android:paddingRight="32dip" />

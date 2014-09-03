@@ -46,6 +46,9 @@ import android.widget.TextView;
 
 import com.android.mms.R;
 import com.android.mms.transaction.MessagingNotification;
+import com.android.mms.util.Constants;
+import com.android.mms.util.Preferences;
+
 
 /**
  * Displays a list of the SMS messages stored on the ICC.
@@ -84,6 +87,7 @@ public class ManageSimMessages extends Activity
 
     @Override
     protected void onCreate(Bundle icicle) {
+		setTheme(Preferences.getTheme());
         super.onCreate(icicle);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 

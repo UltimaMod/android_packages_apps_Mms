@@ -33,6 +33,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.media.CamcorderProfile;
@@ -91,6 +92,7 @@ public class MessageUtils {
     private static final String TAG = LogTag.TAG;
     private static String sLocalNumber;
     private static String[] sNoSubjectStrings;
+    private static Context mContext = MmsApp.getContext();
 
     // Cache of both groups of space-separated ids to their full
     // comma-separated display names, as well as individual ids to
@@ -634,8 +636,9 @@ public class MessageUtils {
             return;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-
-        builder.setIcon(R.drawable.ic_sms_mms_not_delivered);
+        int[] attr = new int[] { R.attr.smsMmsNotDelivered };
+    	TypedArray ta = mContext.obtainStyledAttributes(attr);
+        builder.setIcon(ta.getDrawable(0));
         builder.setTitle(title);
         builder.setMessage(message);
         builder.setPositiveButton(android.R.string.ok, new OnClickListener() {

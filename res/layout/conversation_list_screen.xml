@@ -29,8 +29,8 @@
         android:layout_below="@+id/banner_sms_promo"
         android:drawSelectorOnTop="false"
         android:scrollbarStyle="insideOverlay"
-        android:background="@color/background"
-        android:cacheColorHint="@color/background"
+        android:background="?attr/backgroundColor"
+        android:cacheColorHint="?attr/backgroundColor"
         android:fadingEdgeLength="16dip" />
 
     <TextView android:id="@+id/empty"

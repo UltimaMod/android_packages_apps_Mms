@@ -20,6 +20,7 @@ package com.android.mms.ui;
 import java.util.Map;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
@@ -40,13 +41,16 @@ public class VideoAttachmentView extends LinearLayout implements
     private static final String TAG = "VideoAttachmentView";
 
     private ImageView mThumbnailView;
+    private Context mContext;
 
     public VideoAttachmentView(Context context) {
         super(context);
+        mContext = context;
     }
 
     public VideoAttachmentView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
     }
 
     @Override
@@ -88,12 +92,17 @@ public class VideoAttachmentView extends LinearLayout implements
 
     public void setVideo(String name, Uri video) {
         try {
+        	int[] attrs = new int[] { R.attr.missingThumbNailVideo };
+
+        	TypedArray ta = mContext.obtainStyledAttributes(attrs);
+
             Bitmap bitmap = createVideoThumbnail(mContext, video);
             if (null == bitmap) {
                 bitmap = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.ic_missing_thumbnail_video);
+                        ta.getResourceId(0, R.drawable.ic_missing_thumbnail_video));
             }
             mThumbnailView.setImageBitmap(bitmap);
+            ta.recycle();
         } catch (java.lang.OutOfMemoryError e) {
             Log.e(TAG, "setVideo: out of memory: ", e);
         }

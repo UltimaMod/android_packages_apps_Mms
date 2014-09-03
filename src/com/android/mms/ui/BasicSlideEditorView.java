@@ -20,6 +20,7 @@ package com.android.mms.ui;
 import java.util.Map;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -48,9 +49,11 @@ public class BasicSlideEditorView extends LinearLayout implements
     private EditText mEditText;
     private boolean mOnTextChangedListenerEnabled = true;
     private OnTextChangedListener mOnTextChangedListener;
+    private static Context mContext;
 
     public BasicSlideEditorView(Context context) {
         super(context);
+        mContext = context;
     }
 
     public BasicSlideEditorView(Context context, AttributeSet attrs) {
@@ -96,12 +99,15 @@ public class BasicSlideEditorView extends LinearLayout implements
     }
 
     public void setImage(String name, Bitmap bitmap) {
+    	int[] attrs = new int[] { R.attr.missingThumbNailPicture };
+    	TypedArray ta = mContext.obtainStyledAttributes(attrs);
         try {
             if (null == bitmap) {
                 bitmap = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.ic_missing_thumbnail_picture);
+                        ta.getResourceId(0, R.drawable.ic_missing_thumbnail_picture));
             }
             mImageView.setImageBitmap(bitmap);
+            ta.recycle();
         } catch (java.lang.OutOfMemoryError e) {
             Log.e(TAG, "setImage: out of memory: ", e);
         }
@@ -130,12 +136,15 @@ public class BasicSlideEditorView extends LinearLayout implements
 
     public void setVideo(String name, Uri video) {
         try {
+        	int[] attrs = new int[] { R.attr.missingThumbNailVideo };
+        	TypedArray ta = mContext.obtainStyledAttributes(attrs);
             Bitmap bitmap = VideoAttachmentView.createVideoThumbnail(mContext, video);
             if (null == bitmap) {
                 bitmap = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.ic_missing_thumbnail_video);
+                		ta.getResourceId(0, R.drawable.ic_missing_thumbnail_video));
             }
             mImageView.setImageBitmap(bitmap);
+        	ta.recycle();
         } catch (java.lang.OutOfMemoryError e) {
             Log.e(TAG, "setVideo: out of memory: ", e);
         }

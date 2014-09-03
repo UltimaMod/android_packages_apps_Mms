@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -57,6 +58,8 @@ import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
 import com.android.mms.ui.BasicSlideEditorView.OnTextChangedListener;
 import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
+import com.android.mms.util.Constants;
+import com.android.mms.util.Preferences;
 import com.google.android.mms.ContentType;
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu.PduBody;
@@ -127,6 +130,7 @@ public class SlideEditorActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+		setTheme(Preferences.getTheme());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_slide_activity);
 
@@ -338,6 +342,18 @@ public class SlideEditorActivity extends Activity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+    	int[] attrs = new int[] { R.attr.menuMovie,
+    			R.attr.menuPicture,
+    			R.attr.menuRemovePicture,
+    			R.attr.menuRemoveSound,
+    			R.attr.menuRemoveText,
+    			R.attr.menuRemoveVideo,
+    			R.attr.menuAddSound,
+    			R.attr.menuAddSlide,
+    			R.attr.menuDuration };
+
+    	TypedArray ta = SlideEditorActivity.this.obtainStyledAttributes(attrs);
+
         if (isFinishing()) {
             return false;
         }
@@ -357,55 +373,55 @@ public class SlideEditorActivity extends Activity {
         if (slide.hasText() && !TextUtils.isEmpty(slide.getText().getText())) {
             //"Change text" if text is set.
             menu.add(0, MENU_REMOVE_TEXT, 0, R.string.remove_text).setIcon(
-                    R.drawable.ic_menu_remove_text);
+            		ta.getDrawable(4));
         }
 
         // Picture
         if (slide.hasImage()) {
             menu.add(0, MENU_DEL_PICTURE, 0, R.string.remove_picture).setIcon(
-                    R.drawable.ic_menu_remove_picture);
+            		ta.getDrawable(2));
         } else if (!slide.hasVideo()) {
             menu.add(0, MENU_ADD_PICTURE, 0, R.string.add_picture).setIcon(
-                    R.drawable.ic_menu_picture);
+            		ta.getDrawable(1));
             menu.add(0, MENU_TAKE_PICTURE, 0, R.string.attach_take_photo).setIcon(
-                    R.drawable.ic_menu_picture);
+            		ta.getDrawable(1));
         }
 
         // Music
         if (slide.hasAudio()) {
             menu.add(0, MENU_DEL_AUDIO, 0, R.string.remove_music).setIcon(
-                    R.drawable.ic_menu_remove_sound);
+            		ta.getDrawable(3));
         } else if (!slide.hasVideo()) {
             if (MmsConfig.getAllowAttachAudio()) {
                 SubMenu subMenu = menu.addSubMenu(0, MENU_SUB_AUDIO, 0, R.string.add_music)
-                    .setIcon(R.drawable.ic_menu_add_sound);
+                    .setIcon(ta.getDrawable(6));
                 subMenu.add(0, MENU_ADD_AUDIO, 0, R.string.attach_sound);
                 subMenu.add(0, MENU_RECORD_SOUND, 0, R.string.attach_record_sound);
             } else {
                 menu.add(0, MENU_RECORD_SOUND, 0, R.string.attach_record_sound)
-                    .setIcon(R.drawable.ic_menu_add_sound);
+                    .setIcon(ta.getDrawable(6));
             }
         }
 
         // Video
         if (slide.hasVideo()) {
             menu.add(0, MENU_DEL_VIDEO, 0, R.string.remove_video).setIcon(
-                    R.drawable.ic_menu_remove_video);
+            		ta.getDrawable(5));
         } else if (!slide.hasAudio() && !slide.hasImage()) {
-            menu.add(0, MENU_ADD_VIDEO, 0, R.string.add_video).setIcon(R.drawable.ic_menu_movie);
+            menu.add(0, MENU_ADD_VIDEO, 0, R.string.add_video).setIcon(ta.getDrawable(0));
             menu.add(0, MENU_TAKE_VIDEO, 0, R.string.attach_record_video)
-                .setIcon(R.drawable.ic_menu_movie);
+                .setIcon(ta.getDrawable(0));
         }
 
         // Add slide
         menu.add(0, MENU_ADD_SLIDE, 0, R.string.add_slide).setIcon(
-                R.drawable.ic_menu_add_slide);
+        		ta.getDrawable(7));
 
         // Slide duration
         String duration = getResources().getString(R.string.duration_sec);
         menu.add(0, MENU_DURATION, 0,
                 duration.replace("%s", String.valueOf(slide.getDuration() / 1000))).setIcon(
-                        R.drawable.ic_menu_duration);
+                		ta.getDrawable(8));
 
         // Slide layout
         int resId;
@@ -415,7 +431,8 @@ public class SlideEditorActivity extends Activity {
             resId = R.string.layout_bottom;
         }
         // FIXME: set correct icon when layout icon is available.
-        menu.add(0, MENU_LAYOUT, 0, resId).setIcon(R.drawable.ic_menu_picture);
+        menu.add(0, MENU_LAYOUT, 0, resId).setIcon(ta.getDrawable(1));
+        ta.recycle();
         return true;
     }
 

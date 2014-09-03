@@ -22,4 +22,14 @@
     <string-array name="empty_subject_strings">
         <item>no subject</item>
     </string-array>
+    <string-array name="theme_options_entries">
+        <item>@string/option_holo_light</item>
+        <item>@string/option_holo_light_dab</item>
+        <item>@string/option_holo_dark</item>
+    </string-array>
+    <string-array name="theme_options_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>

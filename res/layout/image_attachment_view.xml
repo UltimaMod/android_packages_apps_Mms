@@ -25,7 +25,7 @@
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:paddingRight="5dip"
-    android:background="@drawable/attachment_editor_bg">
+    android:background="?attr/attachmentEditor">
 
     <ImageView
         android:id="@+id/image_content"
@@ -45,7 +45,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="100dip"
             android:layout_height="45dip"
-            android:textColor="@color/button_text"
+            android:textColor="?attr/ButtonText"
             android:text="@string/view" />
 
         <Button
@@ -53,7 +53,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="100dip"
             android:layout_height="45dip"
-            android:textColor="@color/button_text"
+            android:textColor="?attr/ButtonText"
             android:text="@string/replace" />
 
         <Button
@@ -61,7 +61,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="100dip"
             android:layout_height="45dip"
-            android:textColor="@color/button_text"
+            android:textColor="?attr/ButtonText"
             android:text="@string/remove" />
 
     </LinearLayout>

@@ -17,6 +17,7 @@
 package com.android.mms.util;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -83,15 +84,20 @@ public class ThumbnailManager extends BackgroundLoaderManager {
 
     public ThumbnailManager(final Context context) {
         super(context);
+        int[] attrs = new int[] { R.attr.missingThumbNailPicture, R.attr.missingThumbNailVideo };
+
+    	TypedArray ta = context.obtainStyledAttributes(attrs);
 
         mThumbnailCache = new SimpleCache<Uri, Bitmap>(8, 16, 0.75f, true);
         mContext = context;
 
         mEmptyImageBitmap = BitmapFactory.decodeResource(context.getResources(),
-                R.drawable.ic_missing_thumbnail_picture);
+        		ta.getResourceId(0, R.drawable.ic_missing_thumbnail_picture));
 
         mEmptyVideoBitmap = BitmapFactory.decodeResource(context.getResources(),
-                R.drawable.ic_missing_thumbnail_video);
+        		ta.getResourceId(1, R.drawable.ic_missing_thumbnail_video));
+        
+        ta.recycle();
     }
 
     /**

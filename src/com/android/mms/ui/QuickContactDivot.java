@@ -18,6 +18,7 @@ package com.android.mms.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -62,19 +63,20 @@ public class QuickContactDivot extends QuickContactBadge implements Divot{
     }
 
     private void setDrawable() {
-        Resources r = getContext().getResources();
+     int[] attrs = new int[] { R.attr.messageBubbleRight, R.attr.messageBubbleLeft };
+     TypedArray ta = getContext().obtainStyledAttributes(attrs);
 
         switch (mPosition) {
             case LEFT_UPPER:
             case LEFT_MIDDLE:
             case LEFT_LOWER:
-                mDrawable = r.getDrawable(R.drawable.msg_bubble_right);
+            	mDrawable = ta.getDrawable(0);
                 break;
 
             case RIGHT_UPPER:
             case RIGHT_MIDDLE:
             case RIGHT_LOWER:
-                mDrawable = r.getDrawable(R.drawable.msg_bubble_left);
+                mDrawable = ta.getDrawable(1);
                 break;
 
 //            case TOP_LEFT:
@@ -91,6 +93,8 @@ public class QuickContactDivot extends QuickContactBadge implements Divot{
         }
         mDrawableIntrinsicWidth = mDrawable.getIntrinsicWidth();
         mDrawableIntrinsicHeight = mDrawable.getIntrinsicHeight();
+        
+        ta.recycle();
     }
 
     @Override

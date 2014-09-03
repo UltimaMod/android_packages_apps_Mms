@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 
 import com.android.mms.MmsConfig;
 import com.android.mms.R;
@@ -39,11 +40,11 @@ public class AttachmentTypeSelectorAdapter extends IconListAdapter {
     public final static int ADD_SOUND               = 4;
     public final static int RECORD_SOUND            = 5;
     public final static int ADD_SLIDESHOW           = 6;
-
+    
     public AttachmentTypeSelectorAdapter(Context context, int mode) {
         super(context, getData(mode, context));
     }
-    
+
     public int buttonToCommand(int whichButton) {
         AttachmentListItem item = (AttachmentListItem)getItem(whichButton);
         return item.getCommand();
@@ -51,31 +52,44 @@ public class AttachmentTypeSelectorAdapter extends IconListAdapter {
 
     protected static List<IconListItem> getData(int mode, Context context) {
         List<IconListItem> data = new ArrayList<IconListItem>(7);
+
+	     int[] attrs = new int[] { 
+	    		 R.attr.attachPicture,
+	    		 R.attr.attachCapturePicture,
+	    		 R.attr.attachVideo,
+	    		 R.attr.attachCaptureVideo,
+	    		 R.attr.attachAudio,
+	    		 R.attr.attachCaptureAudio,
+	    		 R.attr.attachSlideshow };
+	     
+	    TypedArray ta = context.obtainStyledAttributes(attrs);
+	    int defValue = R.drawable.list_unread_holo_dark; //This image is blank, and so will do as a fallback
+
         addItem(data, context.getString(R.string.attach_image),
-                R.drawable.ic_attach_picture_holo_light, ADD_IMAGE);
+        		ta.getResourceId(0, defValue), ADD_IMAGE);
 
         addItem(data, context.getString(R.string.attach_take_photo),
-                R.drawable.ic_attach_capture_picture_holo_light, TAKE_PICTURE);
+        		ta.getResourceId(1, defValue), TAKE_PICTURE);
 
         addItem(data, context.getString(R.string.attach_video),
-                R.drawable.ic_attach_video_holo_light, ADD_VIDEO);
+        		ta.getResourceId(2, defValue), ADD_VIDEO);
 
         addItem(data, context.getString(R.string.attach_record_video),
-                R.drawable.ic_attach_capture_video_holo_light, RECORD_VIDEO);
+        		ta.getResourceId(3, defValue), RECORD_VIDEO);
 
         if (MmsConfig.getAllowAttachAudio()) {
             addItem(data, context.getString(R.string.attach_sound),
-                    R.drawable.ic_attach_audio_holo_light, ADD_SOUND);
+            		ta.getResourceId(4, defValue), ADD_SOUND);
         }
 
         addItem(data, context.getString(R.string.attach_record_sound),
-                R.drawable.ic_attach_capture_audio_holo_light, RECORD_SOUND);
+        		ta.getResourceId(5, defValue), RECORD_SOUND);
 
         if (mode == MODE_WITH_SLIDESHOW) {
             addItem(data, context.getString(R.string.attach_slideshow),
-                    R.drawable.ic_attach_slideshow_holo_light, ADD_SLIDESHOW);
+            		ta.getResourceId(6, defValue), ADD_SLIDESHOW);
         }
-
+        ta.recycle();
         return data;
     }
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="MmsHoloDark">
+		<attr name="textAppearance" format="reference" />
+		<attr name="textAppearanceSearchResult" format="reference" />
+		<attr name="textAppearanceSearchResultSubtitle" format="reference" />
+		<attr name="widgetTitle" format="reference" />
+		
+	<!--Stock Colors -->
+		<attr name="textHairline" format="color" />
+		<attr name="messageCount" format="color" />
+		<attr name="timeStamp" format="color" />
+		<attr name="unreadBgColor" format="color" />
+		<attr name="readBgColor" format="color" />
+		<attr name="widgetSenderTextRead" format="color" />
+		<attr name="widgetSenderTextUnread" format="color" />
+		<attr name="widgetSubjectTextRead" format="color" />
+		<attr name="widgetSubjectTextUnread" format="color" />
+	<!--CM Colors -->
+		<attr name="composeMessageEditText" format="color" />
+		<attr name="composeMessageTextCounter" format="color" />
+		<attr name="actionbarText" format="color" />
+		<attr name="deleteThreadDialog" format="color" />
+		<attr name="deliveryReportHeader" format="color" />
+		<attr name="deliveryReportStatus" format="color" />
+		<attr name="deliveryReportRecipient" format="color" />
+		<attr name="deliveryReportDate" format="color" />
+		<attr name="ButtonText" format="color" />
+		<attr name="messageReceived" format="color" />
+		<attr name="messageSent" format="color" />
+		<attr name="widgetUnreadText" format="color" />
+		<attr name="widgetLoading" format="color" />
+		<attr name="backgroundColor" format="color" />
+		<attr name="darkgrayBackgrounds" format="color" />
+		<attr name="dividersColor" format="color" />
+		<attr name="actionbarTextButton" format="color" />
+		
+		<!-- Images -->
+		<attr name="sendButton" format="reference" />
+		<attr name="contactPicture" format="reference" />
+		
+		<attr name="attachmentEditor" format="reference" />
+		<attr name="hairlineLeft" format="reference" />
+		<attr name="hairlineRight" format="reference" />
+		<attr name="attachAudio" format="reference" />
+		<attr name="attachCaptureAudio" format="reference" />
+		<attr name="attachCapturePicture" format="reference" />
+		<attr name="attachCaptureVideo" format="reference" />
+		<attr name="attachmentUniversalSmall" format="reference" />
+		<attr name="attachPicture" format="reference" />
+		<attr name="attachSlideshow" format="reference" />
+		<attr name="attachVideo" format="reference" />
+		<attr name="dialogAttach" format="reference" />
+		<attr name="lockMessageSMS" format="reference" />
+		<attr name="menuAddSlide" format="reference" />
+		<attr name="menuAddSound" format="reference" />
+		<attr name="menuAttachment" format="reference" />
+		<attr name="menuDeletePlayed" format="reference" />
+		<attr name="menuDuration" format="reference" />
+		<attr name="menuEdit" format="reference" />
+		<attr name="menuMoveDown" format="reference" />
+		<attr name="menuMoveUp" format="reference" />
+		<attr name="menuMovie" format="reference" />
+		<attr name="menuPicture" format="reference" />
+		<attr name="menuRemovePicture" format="reference" />
+		<attr name="menuRemoveSound" format="reference" />
+		<attr name="menuRemoveText" format="reference" />
+		<attr name="menuRemoveVideo" format="reference" />
+		<attr name="missingThumbNailPicture" format="reference" />
+		<attr name="missingThumbNailVideo" format="reference" />
+		<attr name="addRecipients" format="reference" />
+		<attr name="smsMmsDelivered" format="reference" />
+		<attr name="smsMmsDetails" format="reference" />
+		<attr name="smsMmsNotDelivered" format="reference" />
+		<attr name="smsMmsPending" format="reference" />
+		<attr name="messageBubbleLeft" format="reference" />
+		<attr name="messageBubbleRight" format="reference" />
+
+		<attr name="conversationBackgroundRead" format="reference" />
+		<attr name="conversationBackgroundUnread" format="reference" />
+		<attr name="menuCall" format="reference" />
+		<attr name="menuSearch" format="reference" />
+		<attr name="menuCompose" format="reference" />
+		<attr name="menuTrash" format="reference" />
+	</declare-styleable>
+</resources>

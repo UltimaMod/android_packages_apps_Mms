@@ -33,6 +33,8 @@ import android.widget.Toast;
 import com.android.mms.R;
 import com.android.mms.templates.TemplatesProvider.Template;
 import com.android.mms.ui.MessagingPreferenceActivity;
+import com.android.mms.util.Constants;
+import com.android.mms.util.Preferences;
 
 public class TemplateEditor extends Activity implements
         LoaderManager.LoaderCallbacks<Cursor> {
@@ -61,6 +63,7 @@ public class TemplateEditor extends Activity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+		setTheme(Preferences.getTheme());
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.template_editor);

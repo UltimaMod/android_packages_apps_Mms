@@ -28,6 +28,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.content.res.TypedArray;
 
 import com.android.mms.R;
 
@@ -68,9 +69,11 @@ public class ImageAttachmentView extends LinearLayout implements SlideViewInterf
 
     public void setImage(String name, Bitmap bitmap) {
         try {
+            int[] attrs = new int[] { R.attr.missingThumbNailPicture };
+            TypedArray ta = mContext.obtainStyledAttributes(attrs);
             if (null == bitmap) {
                 bitmap = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.ic_missing_thumbnail_picture);
+                       ta.getResourceId(0, R.drawable.ic_missing_thumbnail_picture));
             }
             mImageView.setImageBitmap(bitmap);
         } catch (java.lang.OutOfMemoryError e) {

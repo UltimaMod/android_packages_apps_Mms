@@ -20,6 +20,7 @@ package com.android.mms.ui;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,6 +44,8 @@ import com.android.mms.model.IModelChangedObserver;
 import com.android.mms.model.Model;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
+import com.android.mms.util.Constants;
+import com.android.mms.util.Preferences;
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu.PduBody;
 import com.google.android.mms.pdu.PduPersister;
@@ -83,6 +86,7 @@ public class SlideshowEditActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle icicle) {
+		setTheme(Preferences.getTheme());
         super.onCreate(icicle);
 
         mList = getListView();
@@ -123,6 +127,10 @@ public class SlideshowEditActivity extends ListActivity {
     }
 
     private View createAddSlideItem() {
+    	int[] attrs = new int[] { R.attr.attachSlideshow };
+
+    	TypedArray ta = this.obtainStyledAttributes(attrs);
+
         View v = ((LayoutInflater) getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.slideshow_edit_item, null);
 
@@ -135,7 +143,9 @@ public class SlideshowEditActivity extends ListActivity {
         text.setVisibility(View.VISIBLE);
 
         ImageView image = (ImageView) v.findViewById(R.id.image_preview);
-        image.setImageResource(R.drawable.ic_attach_slideshow_holo_light);
+        image.setImageResource(ta.getResourceId(0, R.drawable.ic_attach_slideshow_holo_light));
+
+    	ta.recycle();
 
         return v;
     }
@@ -225,29 +235,37 @@ public class SlideshowEditActivity extends ListActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
+     int[] attrs = new int[] { R.attr.menuMoveDown, /* index 0 */
+    		 R.attr.menuMoveUp, /* index 1 */
+    		 R.attr.menuAddSlide, /* index 2 */
+    		 R.attr.menuDeletePlayed /* index 3 */ };
+
+     TypedArray ta = this.obtainStyledAttributes(attrs);
 
         int position = mList.getSelectedItemPosition();
         if ((position >= 0) && (position != (mList.getCount() - 1))) {
             // Selected one slide.
             if (position > 0) {
-                menu.add(0, MENU_MOVE_UP, 0, R.string.move_up).setIcon(R.drawable.ic_menu_move_up);
+                menu.add(0, MENU_MOVE_UP, 0, R.string.move_up).setIcon(ta.getResourceId(0, R.drawable.ic_menu_move_up));
             }
 
             if (position < (mSlideListAdapter.getCount() - 1)) {
                 menu.add(0, MENU_MOVE_DOWN, 0, R.string.move_down).setIcon(
-                        R.drawable.ic_menu_move_down);
+                		ta.getResourceId(1, R.drawable.ic_menu_move_down));
             }
 
-            menu.add(0, MENU_ADD_SLIDE, 0, R.string.add_slide).setIcon(R.drawable.ic_menu_add_slide);
+            menu.add(0, MENU_ADD_SLIDE, 0, R.string.add_slide).setIcon(ta.getResourceId(2, R.drawable.ic_menu_add_slide));
 
             menu.add(0, MENU_REMOVE_SLIDE, 0, R.string.remove_slide).setIcon(
                     android.R.drawable.ic_menu_delete);
         } else {
-            menu.add(0, MENU_ADD_SLIDE, 0, R.string.add_slide).setIcon(R.drawable.ic_menu_add_slide);
+            menu.add(0, MENU_ADD_SLIDE, 0, R.string.add_slide).setIcon(ta.getResourceId(0, R.drawable.ic_menu_add_slide));
         }
 
         menu.add(0, MENU_DISCARD_SLIDESHOW, 0,
-                R.string.discard_slideshow).setIcon(R.drawable.ic_menu_delete_played);
+                R.string.discard_slideshow).setIcon(ta.getResourceId(0, R.drawable.ic_menu_delete_played));
+        
+        ta.recycle();
 
         return true;
     }
