@@ -199,7 +199,7 @@
 
 		<item name="menuAddSlide">@drawable/ic_menu_add_slide</item>
 		<item name="menuAddSound">@drawable/ic_menu_add_sound</item>
-		<item name="menuAttachment">@drawable/ic_menu_attachment_light</item>
+		<item name="menuAttachment">@drawable/ic_menu_attachment_dark</item>
 		<item name="menuDeletePlayed">@drawable/ic_menu_delete_played</item>
 		<item name="menuDuration">@drawable/ic_menu_duration</item>
 		<item name="menuEdit">@drawable/ic_menu_edit</item>

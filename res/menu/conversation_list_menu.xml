@@ -30,7 +30,7 @@
     <item android:id="@+id/action_settings"
         android:title="@string/menu_preferences"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:showAsAction="ifRoom" />
+        android:showAsAction="never" />
 
     <item android:id="@+id/action_delete_all"
         android:title="@string/menu_delete_all"
