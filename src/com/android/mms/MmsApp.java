@@ -39,13 +39,14 @@ import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.transaction.MmsSystemEventReceiver;
 import com.android.mms.transaction.SmsReceiver;
 import com.android.mms.transaction.SmsReceiverService;
+import com.android.mms.ui.MessagingPreferenceActivity;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.util.DraftCache;
 import com.android.mms.util.PduLoaderManager;
 import com.android.mms.util.RateController;
 import com.android.mms.util.SmileyParser;
 import com.android.mms.util.ThumbnailManager;
-import com.android.mms.util.Constants;
+
 
 public class MmsApp extends Application {
     public static final String LOG_TAG = "Mms";
@@ -65,7 +66,7 @@ public class MmsApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        setTheme(MessagingPreferenceActivity.getAppTheme(this));
         if (Log.isLoggable(LogTag.STRICT_MODE_TAG, Log.DEBUG)) {
             // Log tag for enabling/disabling StrictMode violation log. This will dump a stack
             // in the log that shows the StrictMode violator.

@@ -173,8 +173,8 @@ import com.android.mms.util.PhoneNumberFormatter;
 import com.android.mms.util.SendingProgressTokenManager;
 import com.android.mms.util.SmileyParser;
 import com.android.mms.util.UnicodeFilter;
-import com.android.mms.util.Constants;
-import com.android.mms.util.Preferences;
+
+
 import com.android.mms.widget.MmsWidgetProvider;
 import com.google.android.mms.ContentType;
 import com.google.android.mms.MmsException;
@@ -200,7 +200,7 @@ import com.google.android.mms.pdu.SendReq;
 public class ComposeMessageActivity extends Activity
         implements View.OnClickListener, TextView.OnEditorActionListener,
         MessageStatusListener, Contact.UpdateListener, OnGesturePerformedListener,
-        LoaderManager.LoaderCallbacks<Cursor>, Constants  {
+        LoaderManager.LoaderCallbacks<Cursor>  {
     public static final int REQUEST_CODE_ATTACH_IMAGE     = 100;
     public static final int REQUEST_CODE_TAKE_PICTURE     = 101;
     public static final int REQUEST_CODE_ATTACH_VIDEO     = 102;
@@ -2059,7 +2059,7 @@ public class ComposeMessageActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mIsSmsEnabled = MmsConfig.isSmsEnabled(this);
-		setTheme(Preferences.getTheme());
+		setTheme(MessagingPreferenceActivity.getAppTheme(this));
         super.onCreate(savedInstanceState);
 
         resetConfiguration(getResources().getConfiguration());

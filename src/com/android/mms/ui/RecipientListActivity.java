@@ -43,8 +43,8 @@ import com.android.mms.R;
 import com.android.mms.data.Contact;
 import com.android.mms.data.ContactList;
 import com.android.mms.data.Conversation;
-import com.android.mms.util.Constants;
-import com.android.mms.util.Preferences;
+
+
 
 /**
  * Display a list of recipients for a group conversation. This activity expects to receive a
@@ -57,7 +57,7 @@ public class RecipientListActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle icicle) {
-		setTheme(Preferences.getTheme());
+		setTheme(MessagingPreferenceActivity.getAppTheme(this));
         super.onCreate(icicle);
 
         if (icicle != null) {

@@ -80,8 +80,8 @@ import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.transaction.SmsRejectedReceiver;
 import com.android.mms.util.DraftCache;
 import com.android.mms.util.Recycler;
-import com.android.mms.util.Constants;
-import com.android.mms.util.Preferences;
+
+
 import com.android.mms.widget.MmsWidgetProvider;
 import com.google.android.mms.pdu.PduHeaders;
 
@@ -92,7 +92,7 @@ import java.util.HashSet;
 /**
  * This activity provides a list view of existing conversations.
  */
-public class ConversationList extends ListActivity implements DraftCache.OnDraftChangedListener, Constants {
+public class ConversationList extends ListActivity implements DraftCache.OnDraftChangedListener {
     private static final String TAG = "ConversationList";
     private static final boolean DEBUG = false;
     private static final boolean DEBUGCLEANUP = true;
@@ -137,7 +137,7 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {	
-		setTheme(Preferences.getTheme());
+		setTheme(MessagingPreferenceActivity.getAppTheme(this));
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.conversation_list_screen);

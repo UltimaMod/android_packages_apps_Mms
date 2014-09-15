@@ -58,8 +58,8 @@ import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
 import com.android.mms.ui.BasicSlideEditorView.OnTextChangedListener;
 import com.android.mms.ui.MessageUtils.ResizeImageResultCallback;
-import com.android.mms.util.Constants;
-import com.android.mms.util.Preferences;
+
+
 import com.google.android.mms.ContentType;
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu.PduBody;
@@ -130,7 +130,7 @@ public class SlideEditorActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-		setTheme(Preferences.getTheme());
+		setTheme(MessagingPreferenceActivity.getAppTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_slide_activity);
 

@@ -18,8 +18,8 @@ package com.android.mms.ui;
 
 import android.os.Bundle;
 import android.view.WindowManager;
-import com.android.mms.util.Constants;
-import com.android.mms.util.Preferences;
+
+
 
 /**
  * This activity is privately used to hide the lock screen before showing ComposeMessageActivity.
@@ -27,7 +27,7 @@ import com.android.mms.util.Preferences;
 public class ComposeMessageActivityNoLockScreen extends ComposeMessageActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-		setTheme(Preferences.getTheme());
+		setTheme(MessagingPreferenceActivity.getAppTheme(this));
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD |
                 WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         super.onCreate(savedInstanceState);

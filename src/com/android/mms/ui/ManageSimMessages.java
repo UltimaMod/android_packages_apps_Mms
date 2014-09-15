@@ -46,8 +46,8 @@ import android.widget.TextView;
 
 import com.android.mms.R;
 import com.android.mms.transaction.MessagingNotification;
-import com.android.mms.util.Constants;
-import com.android.mms.util.Preferences;
+
+
 
 
 /**
@@ -87,7 +87,7 @@ public class ManageSimMessages extends Activity
 
     @Override
     protected void onCreate(Bundle icicle) {
-		setTheme(Preferences.getTheme());
+		setTheme(MessagingPreferenceActivity.getAppTheme(this));
         super.onCreate(icicle);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 

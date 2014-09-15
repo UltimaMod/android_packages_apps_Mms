@@ -35,8 +35,8 @@ import com.android.mms.R;
 import com.android.mms.data.Group;
 import com.android.mms.data.PhoneNumber;
 import com.android.mms.data.RecipientsListLoader;
-import com.android.mms.util.Constants;
-import com.android.mms.util.Preferences;
+
+
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -60,7 +60,7 @@ public class SelectRecipientsList extends ListActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-		setTheme(Preferences.getTheme());
+		setTheme(MessagingPreferenceActivity.getAppTheme(this));
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.select_recipients_list_screen);

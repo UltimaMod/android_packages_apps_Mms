@@ -44,8 +44,8 @@ import com.android.mms.model.IModelChangedObserver;
 import com.android.mms.model.Model;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
-import com.android.mms.util.Constants;
-import com.android.mms.util.Preferences;
+
+
 import com.google.android.mms.MmsException;
 import com.google.android.mms.pdu.PduBody;
 import com.google.android.mms.pdu.PduPersister;
@@ -86,7 +86,7 @@ public class SlideshowEditActivity extends ListActivity {
 
     @Override
     protected void onCreate(Bundle icicle) {
-		setTheme(Preferences.getTheme());
+		setTheme(MessagingPreferenceActivity.getAppTheme(this));
         super.onCreate(icicle);
 
         mList = getListView();
