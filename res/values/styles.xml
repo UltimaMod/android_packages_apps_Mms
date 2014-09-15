@@ -168,7 +168,7 @@
 		<item name="readBgColor">@drawable/read_bgcolor_light</item> 
 		<item name="composeMessageEditText">@color/compose_message_edit_text</item>
 		<item name="composeMessageTextCounter">@color/compose_message_text_counter</item>
-		<item name="actionbarText">@color/actionbar_text</item>
+		<item name="actionbarText">@color/actionbar_text_dark</item>
 		<item name="deleteThreadDialog">@color/delete_thread_dialog</item>
 		<item name="deliveryReportHeader">@color/delivery_report_header</item>
 		<item name="deliveryReportStatus">@color/delivery_report_recipient</item>
